@@ -1,11 +1,18 @@
 import torch
 from diffusers import StableDiffusionPipeline
-from diffusers.pipelines.stable_diffusion.convert_from_ckpt import download_from_original_stable_diffusion_ckpt
+
+
+# comments - name, assignment, estimate, actual
+#Damon Beam - Final Project - Expected time 25 hours - Actual time: 30 hours
+#Uses models from HuggingFace to create AI generated characters. Uses the customTkinter UI for GUI. Project was a lot of fun to do, a lot of the time taken was learning how to
+#use stable diffusion, finding good models, creating the ui, and learning how to best make art utilizing stable difusion's prompt system. I had a few bugs / misteps along the 
+#way that also took some time to fix. Overall, I ran over the expected time, but I learned a ton about AI art and how to get the best results.
+
 
 #Sets the diffusion model from the pretrained model. Safety Chekcer disables the safety checker to prevent from being blacked out. NSFW images are turned off in the negative prompt.
 modelname = "Lykon/NeverEnding-Dream"
-pipe = StableDiffusionPipeline.from_pretrained(modelname, torch_dtype=torch.float16, safety_checker = None) #Good for photorealistic / digital art / anime / allrounder
-#pipe2 = StableDiffusionPipeline.from_pretrained("Ojimi/anime-kawai-diffusion", torch_dtype=torch.float16, safety_checker = None) #Good for very anime art style
+pipe = StableDiffusionPipeline.from_pretrained(modelname, torch_dtype=torch.float16) #Good for photorealistic / digital art / anime / allrounder
+#pipe2 = StableDiffusionPipeline.from_pretrained("Ojimi/anime-kawai-diffusion", torch_dtype=torch.float16) #Good for very anime art style
 
 #Uses"cuda" or the GPU. If set to "cpu" it can be ran on a cpu instead. Torch will need to be installed @ https://pytorch.org/get-started/locally/ based on the user's system.
 pipe = pipe.to("cuda")
@@ -31,7 +38,7 @@ race = ''
 skin = ''
 build = ''
 height = ''
-c_class = ''
+c_class = '' #Character class (mage, warrior, paladin, etc...)
 hair = ''
 eyes = ''
 head = ''

@@ -49,16 +49,19 @@ def generate_art():
 
     display_image()
 
+#Diplays the image on customTkinter GUI
 def display_image():
     display = customtkinter.CTkImage(dark_image=Image.open("image.png"), size=(520, 520))
     image_label = customtkinter.CTkLabel(image_frame, width=512, height= 512, image=display, text="")
     image_label.grid(row=0, column=0, padx=25, pady=10, sticky="nw")
 
+#Saves the image and asks for the filename
 def save_image():
     image_to_save = Image.open("image.png")
     save_path = filedialog.asksaveasfilename(title="Save Image as", defaultextension=".jpg")
     image_to_save.save(save_path)
 
+#Switches between the two models through the GUI
 def switch_model():
     global modelname
     global pipe
